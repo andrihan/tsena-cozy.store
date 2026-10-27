@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    image: tsena-cozy:latest
+    container_name: tsena-cozy
+    restart: unless-stopped
+    # Écoute seulement sur le réseau Incus : le site n'est joignable
+    # que par le Nginx d'entrée (conteneur srv-nginx), pas depuis Internet.
+    ports:
+      - "10.185.89.1:8081:80"
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true

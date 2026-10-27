@@ -1,0 +1,7 @@
+.git
+.nojekyll
+CNAME
+Dockerfile
+docker-compose.yml
+.dockerignore
+deploy/
